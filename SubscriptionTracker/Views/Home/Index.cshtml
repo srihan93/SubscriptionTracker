@@ -1,0 +1,63 @@
+﻿@model CustomerSubscriptionViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h4>Expired Customers</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Plan</th>
+            <th scope="col">Paid On</th>
+            <th scope="col">Expiry</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.CustomerSubscriptionExpired)
+        {
+            <tr>
+                <td>@customer.Customer.CustomerId</td>
+                <td>@customer.Customer.Name</td>
+                <td>@customer.Customer.MobileNumber</td>
+                <td>@customer.Plan.Name</td>
+                <td>@customer.PaidOn</td>
+                <td>@customer.Expiry</td>
+                <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Renew" asp-route-customerId="@customer.Customer.CustomerId">Renew</a>  <div class="divider" /><a class="btn btn-primary" asp-controller="Home" asp-action="UpdatePlan" asp-route-customerId="@customer.Customer.CustomerId">Renew with Changes</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Expiring Customers</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Plan</th>
+            <th scope="col">Paid On</th>
+            <th scope="col">Expiry</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.CustomerSubscriptionExpiring)
+        {
+            <tr>
+                <td>@customer.Customer.CustomerId</td>
+                <td>@customer.Customer.Name</td>
+                <td>@customer.Customer.MobileNumber</td>
+                <td>@customer.Plan.Name</td>
+                <td>@customer.PaidOn</td>
+                <td>@customer.Expiry</td>
+                <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Renew" asp-route-customerId="@customer.Customer.CustomerId">Add Customer</a>  <div class="divider" /><input style="background-color:deepskyblue" type="button" value="Renew with Changes" class="btn btn-primary" name="Renew" /></td>
+            </tr>
+        }
+    </tbody>
+</table>

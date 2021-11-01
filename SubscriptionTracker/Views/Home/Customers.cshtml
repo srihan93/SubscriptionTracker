@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CustomerSubscription>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h4>All Customers</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Plan</th>
+            <th scope="col">Paid On</th>
+            <th scope="col">Expiry</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@customer.Customer.CustomerId</td>
+            <td>@customer.Customer.Name</td>
+            <td>@customer.Customer.MobileNumber</td>
+            <td>@customer.Plan.Name</td>
+            <td>@customer.PaidOn</td>
+            <td>@customer.Expiry</td>
+            @if (customer.Expiry < DateTime.Today)
+            {
+                <td bgcolor="#FFC300"></td>
+            }
+            else
+            {
+
+                <td bgcolor="#AFE1AF"></td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>

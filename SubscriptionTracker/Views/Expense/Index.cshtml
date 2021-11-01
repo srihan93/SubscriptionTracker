@@ -1,0 +1,75 @@
+﻿@model Expense
+
+<form asp-action="AddExpense" method="Post" class="form-horizontal" role="form">
+    <h4>Add Expense</h4>
+
+    <div asp-validation-summary="All" class="danger"></div>
+
+    <div class="form-group">
+        <label asp-for="ExpenseType" class="col-md-2 control-label"> Expense Type</label>
+        <div class="col-md-5">
+            <select id="expenseType" asp-for="ExpenseType">
+                <option value="0">Rent</option>
+                <option value="1">EB</option>
+                <option value="2">Maintainence</option>
+                <option value="3">Food</option>
+                <option value="4">Payout</option>
+                <option value="5">Others</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input id="description" type="text" asp-for="Description" class="form-control" value="Rent" />
+            <span asp-validation-for="Description" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Amount" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input type="text" asp-for="Amount" class="form-control" value="0.00" />
+            <span asp-validation-for="Amount" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SpentBy" class="col-md-2 control-label">Spent By</label>
+        <div class="col-md-5">
+            <input type="text" asp-for="SpentBy" value="" selectBoxOptions="Udhay;Naveen" class="form-control">
+            <span asp-validation-for="SpentBy" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $("#expenseType").change(function () {
+        if ($(this).val() == "0") {
+            $("#description").val("Rent");
+        }
+        if ($(this).val() == "1") {
+            $("#description").val("EB");
+        }
+        if ($(this).val() == 2) {
+            $("#description").val("Maintainence");
+        }
+        if ($(this).val() == 3) {
+            $("#description").val("Food");
+        }
+        if ($(this).val() == 4) {
+            $("#description").val("Payout");
+        }
+        if ($(this).val() == 5) {
+            $("#description").val("Others");
+        }
+    });
+</script>

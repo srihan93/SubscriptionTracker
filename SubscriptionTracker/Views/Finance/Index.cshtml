@@ -1,0 +1,34 @@
+﻿@model CustomerSubscription
+
+<form asp-action="AddCustomer" method="Post" class="form-horizontal" role="form">
+    <h4>Reports</h4>
+
+    <div asp-validation-summary="All" class="danger"></div>
+
+    <div class="form-group">
+        <label asp-for="PlanId" class="col-md-2 control-label">Select Report</label>
+        <div class="col-md-5">
+            <select id="plan" asp-for="PlanId">
+                <option value="1">Expense Report</option>
+                <option value="2">Finance & Expense Report</option>
+                <option value="3">Fees Report</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Name" class="col-md-2 control-label">From Date</label>
+        <div class="col-md-5">
+            <input type="date" asp-for="Customer.Name" class="form-control" />
+            <span asp-validation-for="Customer.Name" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.MobileNumber" class="col-md-2 control-label">To Date</label>
+        <div class="col-md-5">
+            <input type="date" asp-for="Customer.MobileNumber" class="form-control" />
+            <span asp-validation-for="Customer.MobileNumber" class="danger"></span>
+        </div>
+    </div>
+</form>

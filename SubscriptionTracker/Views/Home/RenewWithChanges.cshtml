@@ -1,0 +1,117 @@
+﻿@model CustomerSubscription
+
+<form asp-action="RenewWithChanges" method="Post" class="form-horizontal" role="form">
+    <h4>Renew/Update Plan</h4>
+
+    <h6 style="color:cornflowerblue"></h6>
+
+    <div asp-validation-summary="All" class="danger"></div>
+
+    <div class="form-group" hidden>
+        <label asp-for="CustomerSubscriptionId" class="col-md-2 control-label">Customer ID</label>
+        <div class="col-md-5">
+            <input type="text" readonly asp-for="CustomerSubscriptionId" class="form-control" value="@Model.CustomerSubscriptionId" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CustomerId" class="col-md-2 control-label">Customer ID</label>
+        <div class="col-md-5">
+            <input type="text" readonly asp-for="CustomerId" class="form-control" value="@Model.CustomerId" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Name" class="col-md-2 control-label">Customer Name</label>
+        <div class="col-md-5">
+            <input type="text" asp-for="Customer.Name" class="form-control" value="@Model.Customer.Name" disabled="disabled" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PlanId" class="col-md-2 control-label">Plan</label>
+        <div class="col-md-5">
+            <select id="plan" asp-for="PlanId">
+                <option value="1">Monthly,1500</option>
+                <option value="2">Quartely,3000</option>
+                <option value="3">Half-Yearly,4500</option>
+                <option value="4">Annual,7000</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Plan.Cost" class="col-md-2 control-label">Cost after offer</label>
+        <div class="col-md-5">
+            <input id="plancost" asp-for="Plan.Cost" class="form-control" />
+            <span asp-validation-for="Plan.Cost" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Discount</label>
+        <div class="col-md-5">
+            <input id="discount" type="text" class="form-control" value="0" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $("#plan").change(function () {
+        if ($(this).val() == "1") {
+            let planCost = 1200;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($(this).val() == 2) {
+            let planCost = 2600;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($(this).val() == 3) {
+            let planCost = 4500;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($(this).val() == 4) {
+            let planCost = 6000;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+    });
+
+    $('#discount').keyup(function () {
+        let afterDiscount = $("#plancost").val() - $(this).val();
+        $("#plancost").val(afterDiscount);
+
+        if ($("#plan").val() == 1) {
+            let planCost = 1200;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($("#plan").val() == 2) {
+            let planCost = 2600;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($("#plan").val() == 3) {
+            let planCost = 4500;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+        if ($("#plan").val() == 4) {
+            let planCost = 6000;
+            let cost = planCost - $("#discount").val();
+            $("#plancost").val(cost);
+        }
+
+    }
+    );
+</script>
