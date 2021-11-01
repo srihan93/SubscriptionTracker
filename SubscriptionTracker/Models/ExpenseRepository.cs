@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SubscriptionTracker.Models
 {
@@ -24,6 +25,11 @@ namespace SubscriptionTracker.Models
             {
                 return false;
             }
+        }
+
+        public IEnumerable<Expense> GetAllExpense()
+        {
+            return _appDbContext.Expenses;
         }
     }
 }

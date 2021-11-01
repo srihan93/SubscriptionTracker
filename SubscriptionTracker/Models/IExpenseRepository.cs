@@ -8,5 +8,6 @@ namespace SubscriptionTracker.Models
     public interface IExpenseRepository
     {
         public bool AddExpense(Expense expense);
+        public IEnumerable<Expense> GetAllExpense();
     }
 }
