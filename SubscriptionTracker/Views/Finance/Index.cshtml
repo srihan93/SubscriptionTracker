@@ -12,8 +12,65 @@
     </style>
 </head>
 <body>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Select Report</label>
+        <div class="col-md-5">
+            <select id="report">
+                <option value="1">Expense Report</option>
+                <option value="2">Fees Report</option>
+                <option value="3">Customer Joining Report</option>
+                <option value="4">Annual,7000</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">From Date</label>
+        <div class="col-md-5">
+            <input id="fromDate" type="date" class="form-control" />
+            <span class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="button" class="btn btn-primary" value="Get Report" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">To Date</label>
+        <div class="col-md-5">
+            <input id="toDate" type="date" class="form-control" />
+            <span class="danger"></span>
+        </div>
+    </div>
+
     <div style="width: 500px">
         <table id="tblCustomers" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse">
+            <thead>
+                <tr>
+                    <th>ExpenseId</th>
+                    <th>ExpenseType</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table id="tblExpense" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse">
+            <thead>
+                <tr>
+                    <th>ExpenseId</th>
+                    <th>ExpenseType</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table id="tblFees" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse">
             <thead>
                 <tr>
                     <th>ExpenseId</th>
@@ -39,7 +96,7 @@
         $(function () {
             $.ajax({
                 type: "POST",
-                url: "/Finance/GetExpenseReport",
+                url: "/Finance/GetReport",
                 data: '{}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -60,7 +117,7 @@
                     lengthMenu: [[5, 10, -1], [5, 10, "All"]],
                     dom: 'lBfrtip',
                     buttons: [
-                        
+
                         {
                             extend: 'excelHtml5',
                             title: 'Expense Report'
