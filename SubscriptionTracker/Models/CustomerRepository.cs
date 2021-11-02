@@ -118,8 +118,8 @@ namespace SubscriptionTracker.Models
                     if (customerSubscription != null)
                     {
                         var plan = _appDbContext.Plans.Where(p => p.PlanId == customerSubscription.PlanId).FirstOrDefault();
-                        customerSubscription.PaidOn = DateTime.Now;
-                        customerSubscription.Expiry = Convert.ToDateTime(DateTime.Now.AddMonths(plan.DurationMonths).ToShortDateString());
+                        customerSubscription.PaidOn = DateTime.Today;
+                        customerSubscription.Expiry = Convert.ToDateTime(DateTime.Today.AddMonths(plan.DurationMonths).ToShortDateString());
                         _appDbContext.Update(customerSubscription);
                         _appDbContext.SaveChanges();
                         var transaction = new Transaction();
@@ -154,6 +154,7 @@ namespace SubscriptionTracker.Models
             try
             {
                 customer.IsActive = true;
+                customer.Customer.JoiningDate = DateTime.Today;
                 _appDbContext.Customers.Add(customer.Customer);
                 _appDbContext.SaveChanges();
                 var transaction = new Transaction();

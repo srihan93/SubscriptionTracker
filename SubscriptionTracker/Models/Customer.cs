@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SubscriptionTracker.Models
@@ -23,6 +24,9 @@ namespace SubscriptionTracker.Models
         [Display(Name = "Address")]
         [StringLength(300)]
         public string Address { get; set; }
+
+        [BindNever]
+        public DateTime JoiningDate { get; set; }
 
         [BindNever]
         public bool IsActive { get; set; }

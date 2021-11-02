@@ -27,11 +27,24 @@ namespace SubscriptionTracker.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult GetExpenseReport()
+        [HttpGet]
+        public IActionResult GetReport([FromQuery] string reportName, [FromQuery] string fromDate, [FromQuery] string toDate)
         {
-            List<Expense> expense = _expenseRepository.GetAllExpense().ToList();
-            return Json(JsonConvert.SerializeObject(expense));
+            if (reportName == "2")
+            {
+                var data = _expenseRepository.GetFeesReport(Convert.ToDateTime(fromDate), Convert.ToDateTime(toDate)).ToList();
+                return Json(JsonConvert.SerializeObject(data));
+            }
+            else if (reportName == "1")
+            {
+                var data = _expenseRepository.GetExpenseReport(Convert.ToDateTime(fromDate), Convert.ToDateTime(toDate)).ToList();
+                return Json(JsonConvert.SerializeObject(data));
+            }
+            else
+            {
+                var data = _expenseRepository.GetCustomerJoiningReport(Convert.ToDateTime(fromDate), Convert.ToDateTime(toDate)).ToList();
+                return Json(JsonConvert.SerializeObject(data));
+            }
         }
     }
 }

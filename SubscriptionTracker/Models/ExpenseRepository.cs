@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SubscriptionTracker.Models
 {
@@ -27,9 +28,24 @@ namespace SubscriptionTracker.Models
             }
         }
 
+        public IEnumerable<Expense> GetExpenseReport(DateTime fromDate, DateTime toDate)
+        {
+            return _appDbContext.Expenses.Where(x => x.SpentOn >= fromDate && x.SpentOn <= toDate.AddDays(1));
+        }
+
+        public IEnumerable<Transaction> GetFeesReport(DateTime fromDate, DateTime toDate)
+        {
+            return _appDbContext.Transactions.Where(x => x.TransactedOn >= fromDate && x.TransactedOn <= toDate.AddDays(1));
+        }
+
+        public IEnumerable<Customer> GetCustomerJoiningReport(DateTime fromDate, DateTime toDate)
+        {
+            return _appDbContext.Customers.Where(x => x.JoiningDate >= fromDate && x.JoiningDate <= toDate.AddDays(1));
+        }
+
         public IEnumerable<Expense> GetAllExpense()
         {
-            return _appDbContext.Expenses;
+            throw new NotImplementedException();
         }
     }
 }
