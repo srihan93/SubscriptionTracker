@@ -61,9 +61,14 @@
                     dom: 'lBfrtip',
                     buttons: [
                         
-                        'excelHtml5',
-                        
-                        'pdfHtml5'
+                        {
+                            extend: 'excelHtml5',
+                            title: 'Expense Report'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            title: 'Expense Report'
+                        }
                     ],
                     bFilter: true,
                     bSort: true,
