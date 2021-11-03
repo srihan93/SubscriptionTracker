@@ -11,6 +11,7 @@
             <th scope="col">Customer ID</th>
             <th scope="col">Name</th>
             <th scope="col">Mobile Number</th>
+            <th scope="col">Gender</th>
             <th scope="col">Plan</th>
             <th scope="col">Paid On</th>
             <th scope="col">Expiry</th>
@@ -24,9 +25,10 @@
                 <td>@customer.Customer.CustomerId</td>
                 <td>@customer.Customer.Name</td>
                 <td>@customer.Customer.MobileNumber</td>
+                <td>@customer.Customer.Gender</td>
                 <td>@customer.Plan.Name</td>
-                <td>@customer.PaidOn</td>
-                <td>@customer.Expiry</td>
+                <td>@customer.PaidOn.ToShortDateString()</td>
+                <td>@customer.Expiry.ToShortDateString()</td>
                 <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Renew" asp-route-customerId="@customer.Customer.CustomerId">Renew</a>  <div class="divider" /><a class="btn btn-primary" asp-controller="Home" asp-action="UpdatePlan" asp-route-customerId="@customer.Customer.CustomerId">Renew with Changes</a></td>
             </tr>
         }
@@ -40,6 +42,7 @@
             <th scope="col">Customer ID</th>
             <th scope="col">Name</th>
             <th scope="col">Mobile Number</th>
+            <th scope="col">Gender</th>
             <th scope="col">Plan</th>
             <th scope="col">Paid On</th>
             <th scope="col">Expiry</th>
@@ -53,9 +56,10 @@
                 <td>@customer.Customer.CustomerId</td>
                 <td>@customer.Customer.Name</td>
                 <td>@customer.Customer.MobileNumber</td>
+                <td>@customer.Customer.Gender</td>
                 <td>@customer.Plan.Name</td>
-                <td>@customer.PaidOn</td>
-                <td>@customer.Expiry</td>
+                <td>@customer.PaidOn.ToShortDateString()</td>
+                <td>@customer.Expiry.ToShortDateString()</td>
                 <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Renew" asp-route-customerId="@customer.Customer.CustomerId">Add Customer</a>  <div class="divider" /><input style="background-color:deepskyblue" type="button" value="Renew with Changes" class="btn btn-primary" name="Renew" /></td>
             </tr>
         }

@@ -28,6 +28,22 @@ namespace SubscriptionTracker.Models
         [BindNever]
         public DateTime JoiningDate { get; set; }
 
+      
+        [Display(Name = "Gender")]   
+        public char Gender { get; set; }
+
+        [Required(ErrorMessage = "Please enter Height")]
+        [Display(Name = "Height in Cms")]
+        public decimal Height { get; set; }
+
+        [Required(ErrorMessage = "Please enter Height")]
+        [Display(Name = "Weight in Kgs")]
+        public decimal Weight { get; set; }
+
+        [Required(ErrorMessage = "Please enter Age")]
+        [Display(Name = "Age in Years")]
+        public int Age { get; set; }
+
         [BindNever]
         public bool IsActive { get; set; }
     }

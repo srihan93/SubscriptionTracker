@@ -77,9 +77,20 @@ namespace SubscriptionTracker.Models
                 {
                     cs = customerSubscription;
                 }
+
                 cs.PlanId = customerSubscription.PlanId;
-                cs.PaidOn = DateTime.Now;
-                cs.Expiry = Convert.ToDateTime(DateTime.Now.AddMonths(plan.DurationMonths).ToShortDateString());
+
+                if (customerSubscription.PaidOn == DateTime.MinValue)
+                {
+                    cs.PaidOn = DateTime.Now.Date;
+                    cs.Expiry = Convert.ToDateTime(DateTime.Now.Date.AddMonths(plan.DurationMonths).AddDays(-1).ToShortDateString());
+                }
+                else
+                {
+                    cs.PaidOn = customerSubscription.PaidOn.Date;
+                    cs.Expiry = Convert.ToDateTime(cs.PaidOn.Date.AddMonths(plan.DurationMonths).AddDays(-1).ToShortDateString());
+                }
+
                 cs.IsActive = true;
                 if (cs.CustomerId != 0)
                 {
@@ -118,8 +129,8 @@ namespace SubscriptionTracker.Models
                     if (customerSubscription != null)
                     {
                         var plan = _appDbContext.Plans.Where(p => p.PlanId == customerSubscription.PlanId).FirstOrDefault();
-                        customerSubscription.PaidOn = DateTime.Today;
-                        customerSubscription.Expiry = Convert.ToDateTime(DateTime.Today.AddMonths(plan.DurationMonths).ToShortDateString());
+                        customerSubscription.PaidOn = DateTime.Now.Date;
+                        customerSubscription.Expiry = Convert.ToDateTime(DateTime.Now.Date.AddMonths(plan.DurationMonths).AddDays(-1).ToShortDateString());
                         _appDbContext.Update(customerSubscription);
                         _appDbContext.SaveChanges();
                         var transaction = new Transaction();

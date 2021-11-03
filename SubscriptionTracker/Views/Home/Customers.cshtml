@@ -25,9 +25,9 @@
             <td>@customer.Customer.Name</td>
             <td>@customer.Customer.MobileNumber</td>
             <td>@customer.Plan.Name</td>
-            <td>@customer.PaidOn</td>
-            <td>@customer.Expiry</td>
-            @if (customer.Expiry < DateTime.Today)
+            <td>@customer.PaidOn.ToShortDateString()</td>
+            <td>@customer.Expiry.ToShortDateString()</td>
+            @if (customer.Expiry.Date < DateTime.Now.Date)
             {
                 <td bgcolor="#FFC300"></td>
             }

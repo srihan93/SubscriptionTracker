@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,7 +36,7 @@ namespace SubscriptionTracker.Models
 
         public IEnumerable<Transaction> GetFeesReport(DateTime fromDate, DateTime toDate)
         {
-            return _appDbContext.Transactions.Where(x => x.TransactedOn >= fromDate && x.TransactedOn <= toDate.AddDays(1));
+            return _appDbContext.Transactions.Include(c => c.Customer).Where(x => x.TransactedOn >= fromDate && x.TransactedOn <= toDate.AddDays(1));
         }
 
         public IEnumerable<Customer> GetCustomerJoiningReport(DateTime fromDate, DateTime toDate)

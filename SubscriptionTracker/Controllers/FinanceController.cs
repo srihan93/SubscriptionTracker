@@ -28,6 +28,7 @@ namespace SubscriptionTracker.Controllers
         }
 
         [HttpGet]
+        [Produces("application/json")]
         public IActionResult GetReport([FromQuery] string reportName, [FromQuery] string fromDate, [FromQuery] string toDate)
         {
             if (reportName == "2")
