@@ -72,10 +72,10 @@
         <label asp-for="PlanId" class="col-md-2 control-label">Plan</label>
         <div class="col-md-5">
             <select id="plan" asp-for="PlanId">
-                <option value="1">Monthly,1500</option>
-                <option value="2">Quartely,3000</option>
-                <option value="3">Half-Yearly,4500</option>
-                <option value="4">Annual,7000</option>
+                <option value="1">Monthly,1200</option>
+                <option value="2">Quartely,2800</option>
+                <option value="3">Half-Yearly,4000</option>
+                <option value="4">Annual,6500</option>
             </select>
         </div>
     </div>
@@ -83,8 +83,8 @@
     <div class="form-group">
         <label asp-for="Plan.Cost" class="col-md-2 control-label">Cost after offer</label>
         <div class="col-md-5">
-            <input id="plancost" asp-for="Plan.Cost" value="1500" class="form-control" />
-            <span asp-validation-for="Plan.Cost"  class="danger"></span>
+            <input id="plancost" asp-for="Plan.Cost" value="1200" class="form-control" />
+            <span asp-validation-for="Plan.Cost" class="danger"></span>
         </div>
     </div>
 
@@ -105,22 +105,22 @@
 <script type="text/javascript">
     $("#plan").change(function () {
         if ($(this).val() == "1") {
-            let planCost = 1500;
+            let planCost = 1200;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($(this).val() == 2) {
-            let planCost = 3000;
+            let planCost = 2800;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($(this).val() == 3) {
-            let planCost = 4500;
+            let planCost = 4000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($(this).val() == 4) {
-            let planCost = 7000;
+            let planCost = 6500;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
@@ -131,22 +131,22 @@
         $("#plancost").val(afterDiscount);
 
         if ($("#plan").val() == 1) {
-            let planCost = 1500;
+            let planCost = 1200;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($("#plan").val() == 2) {
-            let planCost = 3000;
+            let planCost = 2800;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($("#plan").val() == 3) {
-            let planCost = 4500;
+            let planCost = 4000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($("#plan").val() == 4) {
-            let planCost = 7000;
+            let planCost = 6500;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
