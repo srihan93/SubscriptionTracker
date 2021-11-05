@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<CustomerSubscription>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Optimus Fitness";
 }
-
 <h4>All Customers</h4>
 <table class="table table-bordered">
     <thead>
@@ -20,24 +19,23 @@
     <tbody>
         @foreach (var customer in Model)
         {
-        <tr>
-            <td>@customer.Customer.CustomerId</td>
-            <td>@customer.Customer.Name</td>
-            <td>@customer.Customer.MobileNumber</td>
-            <td>@customer.Plan.Name</td>
-            <td>@customer.PaidOn.ToShortDateString()</td>
-            <td>@customer.Expiry.ToShortDateString()</td>
-            @if (customer.Expiry.Date < DateTime.Now.Date)
-            {
-                <td bgcolor="#FFC300"></td>
-            }
-            else
-            {
+            <tr>
+                <td>@customer.Customer.CustomerId</td>
+                <td>@customer.Customer.Name</td>
+                <td>@customer.Customer.MobileNumber</td>
+                <td>@customer.Plan.Name</td>
+                <td>@customer.PaidOn.ToShortDateString()</td>
+                <td>@customer.Expiry.ToShortDateString()</td>
+                @if (customer.Expiry.Date < DateTime.Now.Date)
+                {
+                    <td bgcolor="#FFC300"></td>
+                }
+                else
+                {
 
-                <td bgcolor="#AFE1AF"></td>
-            }
-
-        </tr>
+                    <td bgcolor="#AFE1AF"></td>
+                }
+            </tr>
         }
     </tbody>
 </table>

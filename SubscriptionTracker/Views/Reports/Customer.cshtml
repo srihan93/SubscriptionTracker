@@ -1,4 +1,8 @@
-﻿<h4>Customer Report</h4>
+﻿@{
+    ViewData["Title"] = "Optimus Fitness";
+}
+
+<h4>Customer Report</h4>
 <div class="form-horizontal" role="form">
     <div class="form-group">
         <label class="col-md-2 control-label">From Date</label>
@@ -105,6 +109,9 @@
                         data: 'Name'
                     },
                     { data: 'MobileNumber' },
+                    { data: 'Gender' },
+                    { data: 'Weight' },
+                    { data: 'Height' },
                     { data: 'JoiningDate', "render": function (value) { return DateFormatter(value) } }]
 
             });
@@ -114,4 +121,4 @@
     function DateFormatter(value) {
         var dateString = moment(value).format('DD-MM-YYYY');
         return dateString;
-    }   </script>
+    }</script>

@@ -28,8 +28,7 @@ namespace SubscriptionTracker.Models
         [BindNever]
         public DateTime JoiningDate { get; set; }
 
-      
-        [Display(Name = "Gender")]   
+        [Display(Name = "Gender")]
         public char Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter Height")]
@@ -45,7 +44,7 @@ namespace SubscriptionTracker.Models
         public int Age { get; set; }
 
         [BindNever]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 
     public class CustomerWallet

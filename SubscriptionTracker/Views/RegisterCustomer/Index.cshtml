@@ -1,5 +1,9 @@
 ﻿@model CustomerSubscription
 
+@{
+    ViewData["Title"] = "Optimus Fitness";
+}
+
 <form asp-action="AddCustomer" method="Post" class="form-horizontal" role="form">
     <h4>Registration</h4>
 
@@ -79,8 +83,8 @@
     <div class="form-group">
         <label asp-for="Plan.Cost" class="col-md-2 control-label">Cost after offer</label>
         <div class="col-md-5">
-            <input id="plancost" asp-for="Plan.Cost" class="form-control" />
-            <span asp-validation-for="Plan.Cost" class="danger"></span>
+            <input id="plancost" asp-for="Plan.Cost" value="1500" class="form-control" />
+            <span asp-validation-for="Plan.Cost"  class="danger"></span>
         </div>
     </div>
 
@@ -101,12 +105,12 @@
 <script type="text/javascript">
     $("#plan").change(function () {
         if ($(this).val() == "1") {
-            let planCost = 1200;
+            let planCost = 1500;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($(this).val() == 2) {
-            let planCost = 2600;
+            let planCost = 3000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
@@ -116,7 +120,7 @@
             $("#plancost").val(cost);
         }
         if ($(this).val() == 4) {
-            let planCost = 6000;
+            let planCost = 7000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
@@ -127,12 +131,12 @@
         $("#plancost").val(afterDiscount);
 
         if ($("#plan").val() == 1) {
-            let planCost = 1200;
+            let planCost = 1500;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
         if ($("#plan").val() == 2) {
-            let planCost = 2600;
+            let planCost = 3000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
@@ -142,7 +146,7 @@
             $("#plancost").val(cost);
         }
         if ($("#plan").val() == 4) {
-            let planCost = 6000;
+            let planCost = 7000;
             let cost = planCost - $("#discount").val();
             $("#plancost").val(cost);
         }
